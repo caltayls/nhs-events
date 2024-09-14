@@ -1,0 +1,12 @@
+{
+  "python.REPL.enableREPLSmartSend": false,
+    "python.envFile": "${workspaceFolder}/.env",
+
+    "terminal.integrated.env.windows": {
+        "PYTHONPATH": "${workspaceFolder}"
+    },
+
+    "terraform.experimentalFeatures.prefillRequiredFields": true,
+    "editor.suggest.preview":true
+
+}
