@@ -1,0 +1,3 @@
+[MESSAGES CONTROL]
+# Disable all messages except errors and fatal
+disable=C
