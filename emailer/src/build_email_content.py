@@ -21,6 +21,8 @@ active_events.time_added = pd.to_datetime(
 active_events = active_events.dropna().sort_values("time_added")
 
 
+# db sort key should be email frequency so only necessary items are loaded
+
 def create_email_html(events: pd.DataFrame) -> list[dict]:
     """returns list of dicts of:
         {
@@ -32,15 +34,19 @@ def create_email_html(events: pd.DataFrame) -> list[dict]:
     email_addr_content = []
 
     dt_now = datetime.datetime.now()
-    day_of_week_now = dt_now.strftime("%A")
 
     users_df = load_dynamodb()
 
-    # collective email to users subscribed to all times and locations
-    users_all_times = users_df[
-        (users_df.frequency == "hourly") & (users_df.locations == ["All"])
-    ]
  
+
+# for freq group:
+# filter events if necessary
+# send to users who want all locs
+# send to rest
+
+def construct_html(strftime:str, ):
+    
+
     for user in users_all_times.itertuples():
         html = render_html(events, user.uuid)
         obj = {
@@ -69,7 +75,7 @@ def create_email_html(events: pd.DataFrame) -> list[dict]:
             print(user.email)
             print(html)
             # daily
-        elif user.frequency == "daily" & dt_now.hour == 17:
+        elif dt_now.hour == 17:
             daily_events = events_refined[
                 events_refined.time_added.dt.strftime("%d%m") == dt_now.strftime("%d%m")
             ]
@@ -80,8 +86,8 @@ def create_email_html(events: pd.DataFrame) -> list[dict]:
             print(user.email)
 
         # weekly at 1700 on Fridays
-        elif (user.frequency == "weekly" & dt_now.hour == 17 & day_of_week_now == "Friday"):
-            weekly_events = events_refined[
+        elif (dt_now.strftime("%A %H") == "Friday 17"):
+            weekly_events = events_refined.loc[
                 events_refined.time_added.dt.isocalendar().week == dt_now.isocalendar()[1]
             ]
             if len(weekly_events) == 0:
