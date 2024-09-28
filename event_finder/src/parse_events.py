@@ -3,12 +3,18 @@ import re
 import json
 import os
 import aiohttp
+import logging
 from bs4 import BeautifulSoup, ResultSet, Tag
 import pandas as pd
 from dotenv import load_dotenv
 from src.utils import add_end_date_to_df
 
 load_dotenv()
+
+logging.basicConfig(
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',  # Format of the log messages
+)
+logger = logging.getLogger()
 
 
 class EventParser:
@@ -61,7 +67,7 @@ class EventParser:
 
             return card_html
 
-    def html_to_dataframe(self, cards_html) -> pd.DataFrame:
+    def html_to_dataframe(self, cards_html: ResultSet) -> pd.DataFrame:
         """iterates through every event card html and puts data into a df"""  
         events_list = [self.parse_card_info(event) for event in cards_html]
         events_list = [event for event in events_list if event is not None]
@@ -73,7 +79,8 @@ class EventParser:
             df.event_type = df.event_type.str.replace(r"^\W+$", 'Not Listed', regex=True)
         return df
 
-    async def parse_event_cards(self, session, sem, url) -> ResultSet:
+
+    async def parse_event_cards(self, session: aiohttp.ClientSession, sem: asyncio.Semaphore, url: str) -> ResultSet:
         "Finds all event card html"
         async with session.get(url) as response:
             async with sem:
@@ -81,7 +88,9 @@ class EventParser:
                 soup = BeautifulSoup(content, 'html.parser')
                 event_cards = soup.select(self.site_info['EVENT_CARD_SEL'])
                 await asyncio.sleep(1)
+
                 return event_cards
+
 
     def parse_card_info(self, event_card: Tag) -> dict:
         "Extracts event info from event card"
@@ -100,7 +109,7 @@ class EventParser:
                 }
                 return event_dic
             except Exception as e:
-                print(e)
+                logger.error(f"following exception occurred: {e}")
 
         elif self.website == 'concertsforcarers':
             details = event_card.select('span')[:5]
@@ -133,6 +142,7 @@ class EventParser:
             }
             return event_dic
 
+
     async def login(self, session):
         "Log in to tfg"
         # Get the authenticity token from the login page
@@ -157,12 +167,14 @@ class EventParser:
 
         await session.post(login_url, data=login_data, headers=headers)
 
+
     def is_logged_in(self, soup):
         """Check if ticketsforgood log in was successful."""
         login_btn = soup.select_one("nav a.btn")
         if login_btn:
             raise Exception("could not log in to tickets for good")
         return True
+
 
     async def main(self):
         """Runs the entire process for a single website, i.e. gets html, parses and returns df"""
@@ -179,12 +191,8 @@ class EventParser:
     @staticmethod
     async def _fetch_all():
         """Get all events from all websites"""
-
-        print("searching bluelight tickets")
         parser1 = EventParser('bluelighttickets')
-        print("searching tfg")
         parser2 = EventParser('ticketsforgood')
-        print("searching concerts for carers")
         parser3 = EventParser('concertsforcarers')
         tasks = []
         for p in [parser1, parser2, parser3]:

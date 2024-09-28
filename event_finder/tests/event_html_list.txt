@@ -1,0 +1,536 @@
+
+event_finder/tests/unit/test_parse_events.py [<div class="col-12 col-xl-auto d-none d-xxl-flex">
+<ul class="nav">
+<li class="nav-item">
+<a class="nav-link link-light text-primary-on-hover px-3" href="https://www.facebook.com/ticketsforgood/" target="_blank">
+<i class="fab fa-facebook-f"></i>
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link link-light text-primary-on-hover px-3" href="https://twitter.com/TicketsForGood" target="_blank">
+<i class="fab fa-twitter"></i>
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link link-light text-primary-on-hover px-3" href="https://www.instagram.com/ticketsforgood/" target="_blank">
+<i class="fab fa-instagram"></i>
+</a>
+</li>
+</ul>
+</div>, <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+<div class="card border-0 shadow rounded-0 h-100 event_card_135494">
+<img src="https://nhs.ticketsforgood.co.uk/uploads/event/event_image/135494/thumb_718aade2-b25f-40fe-99af-d5ee69919a2c.png" style="height: 102px; object-fit: cover;"/>
+<div class="card-body px-4 d-flex flex-column">
+<h5 class="card-title fw-bold mb-3">
+The Gin To My Tonic Show: The Ultimate Gin &amp; Spirit Festival (Discounted Offer)
+</h5>
+<div class="mt-auto text-muted mb-3">
+<div class="mb-3">
+<div class="row gx-1 mb-3 align-items-center">
+<div class="col-auto">
+<i class="fas fa-map-marker-alt fa-lg fa-fw me-2"></i>
+</div>
+<div class="col">
+Various Venues, UK, UK
+</div>
+</div>
+<div class="row gx-1 mb-3 align-items-center">
+<div class="col-auto">
+<i class="fas fa-calendar fa-lg fa-fw me-2"></i>
+</div>
+<div class="col">
+17 November
+-
+21 September
+</div>
+</div>
+<div class="row gx-1 align-items-center">
+<div class="col-auto">
+<i class="fas fa-tag fa-lg fa-fw me-2"></i>
+</div>
+<div class="col">
+Festivals
+</div>
+</div>
+</div>
+</div>
+<div class="d-grid">
+<a class="btn py-3 rounded-3 fw-bold stretched-link btn-primary" href="/events/135494-the-gin-to-my-tonic-show-the-ultimate-gin-spirit-festival-discounted-offer"><i class="fas fa-ticket-alt fa-lg me-2"></i>
+Buy tickets
+</a></div>
+</div>
+</div>
+</div>, <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+<div class="card border-0 shadow rounded-0 h-100 event_card_131640">
+<img src="https://nhs.ticketsforgood.co.uk/uploads/event/event_image/131640/thumb_909e2e54-da33-4095-99f2-e7f76a593f6e.png" style="height: 102px; object-fit: cover;"/>
+<div class="card-body px-4 d-flex flex-column">
+<h5 class="card-title fw-bold mb-3">
+Alcotraz London - Immersive Cocktail Bar (25% Off)
+</h5>
+<div class="mt-auto text-muted mb-3">
+<div class="mb-3">
+<div class="row gx-1 mb-3 align-items-center">
+<div class="col-auto">
+<i class="fas fa-map-marker-alt fa-lg fa-fw me-2"></i>
+</div>
+<div class="col">
+Alcotraz London, London
+</div>
+</div>
+<div class="row gx-1 mb-3 align-items-center">
+<div class="col-auto">
+<i class="fas fa-calendar fa-lg fa-fw me-2"></i>
+</div>
+<div class="col">
+08 January
+-
+31 December
+</div>
+</div>
+<div class="row gx-1 align-items-center">
+<div class="col-auto">
+<i class="fas fa-tag fa-lg fa-fw me-2"></i>
+</div>
+<div class="col">
+Family &amp; Attractions, Theatre
+</div>
+</div>
+</div>
+</div>
+<div class="d-grid">
+<a class="btn py-3 rounded-3 fw-bold stretched-link btn-primary" href="/events/131640-alcotraz-london-immersive-cocktail-bar-25-off"><i class="fas fa-ticket-alt fa-lg me-2"></i>
+Buy tickets
+</a></div>
+</div>
+</div>
+</div>, <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+<div class="card border-0 shadow rounded-0 h-100 event_card_172422">
+<img src="https://nhs.ticketsforgood.co.uk/uploads/event/event_image/172422/thumb_7553b876-6d1c-4174-843e-807eab9b72ed.png" style="height: 102px; object-fit: cover;"/>
+<div class="card-body px-4 d-flex flex-column">
+<h5 class="card-title fw-bold mb-3">
+The Sixteen: 2024 UK Tour
+</h5>
+<div class="mt-auto text-muted mb-3">
+<div class="mb-3">
+<div class="row gx-1 mb-3 align-items-center">
+<div class="col-auto">
+<i class="fas fa-map-marker-alt fa-lg fa-fw me-2"></i>
+</div>
+<div class="col">
+Various Venues, UK, UK
+</div>
+</div>
+<div class="row gx-1 mb-3 align-items-center">
+<div class="col-auto">
+<i class="fas fa-calendar fa-lg fa-fw me-2"></i>
+</div>
+<div class="col">
+05 April
+-
+21 September
+</div>
+</div>
+<div class="row gx-1 align-items-center">
+<div class="col-auto">
+<i class="fas fa-tag fa-lg fa-fw me-2"></i>
+</div>
+<div class="col">
+Music, Theatre
+</div>
+</div>
+</div>
+</div>
+<div class="d-grid">
+<a class="btn py-3 rounded-3 fw-bold stretched-link btn-primary" href="/events/172422-the-sixteen-2024-uk-tour"><i class="fas fa-ticket-alt fa-lg me-2"></i>
+Buy tickets
+</a></div>
+</div>
+</div>
+</div>, <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+<div class="card border-0 shadow rounded-0 h-100 event_card_215784">
+<img src="https://nhs.ticketsforgood.co.uk/uploads/event/event_image/215784/thumb_f97c85e9-ce40-44b5-9d8c-40538671b3a2.jpg" style="height: 102px; object-fit: cover;"/>
+<div class="card-body px-4 d-flex flex-column">
+<h5 class="card-title fw-bold mb-3">
+York Knights &amp; Valkyrie 2024 Home Games (Discounted Offer)
+</h5>
+<div class="mt-auto text-muted mb-3">
+<div class="mb-3">
+<div class="row gx-1 mb-3 align-items-center">
+<div class="col-auto">
+<i class="fas fa-map-marker-alt fa-lg fa-fw me-2"></i>
+</div>
+<div class="col">
+LNER Community Stadium, York
+</div>
+</div>
+<div class="row gx-1 mb-3 align-items-center">
+<div class="col-auto">
+<i class="fas fa-calendar fa-lg fa-fw me-2"></i>
+</div>
+<div class="col">
+19 May
+-
+29 September
+</div>
+</div>
+<div class="row gx-1 align-items-center">
+<div class="col-auto">
+<i class="fas fa-tag fa-lg fa-fw me-2"></i>
+</div>
+<div class="col">
+Sport
+</div>
+</div>
+</div>
+</div>
+<div class="d-grid">
+<a class="btn py-3 rounded-3 fw-bold stretched-link btn-primary" href="/events/215784-york-knights-valkyrie-2024-home-games-discounted-offer"><i class="fas fa-ticket-alt fa-lg me-2"></i>
+Buy tickets
+</a></div>
+</div>
+</div>
+</div>, <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+<div class="card border-0 shadow rounded-0 h-100 event_card_221575">
+<img src="https://nhs.ticketsforgood.co.uk/uploads/event/event_image/221575/thumb_535dddb8-b691-4295-9b22-c18cbcd6ca21.png" style="height: 102px; object-fit: cover;"/>
+<div class="card-body px-4 d-flex flex-column">
+<h5 class="card-title fw-bold mb-3">
+Jersey Beats - Oh What A Nite!
+</h5>
+<div class="mt-auto text-muted mb-3">
+<div class="mb-3">
+<div class="row gx-1 mb-3 align-items-center">
+<div class="col-auto">
+<i class="fas fa-map-marker-alt fa-lg fa-fw me-2"></i>
+</div>
+<div class="col">
+VIVA Blackpool, Blackpool
+</div>
+</div>
+<div class="row gx-1 mb-3 align-items-center">
+<div class="col-auto">
+<i class="fas fa-calendar fa-lg fa-fw me-2"></i>
+</div>
+<div class="col">
+12 June
+-
+27 November
+</div>
+</div>
+<div class="row gx-1 align-items-center">
+<div class="col-auto">
+<i class="fas fa-tag fa-lg fa-fw me-2"></i>
+</div>
+<div class="col">
+Theatre
+</div>
+</div>
+</div>
+</div>
+<div class="d-grid">
+<a class="btn py-3 rounded-3 fw-bold stretched-link btn-primary" href="/events/221575-jersey-beats-oh-what-a-nite"><i class="fas fa-ticket-alt fa-lg me-2"></i>
+Buy tickets
+</a></div>
+</div>
+</div>
+</div>, <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+<div class="card border-0 shadow rounded-0 h-100 event_card_220209">
+<img src="https://nhs.ticketsforgood.co.uk/uploads/event/event_image/220209/thumb_49993681-75ab-4490-9fa5-fbabc5ffede9.png" style="height: 102px; object-fit: cover;"/>
+<div class="card-body px-4 d-flex flex-column">
+<h5 class="card-title fw-bold mb-3">
+Dabbers Jackpot Bingo
+</h5>
+<div class="mt-auto text-muted mb-3">
+<div class="mb-3">
+<div class="row gx-1 mb-3 align-items-center">
+<div class="col-auto">
+<i class="fas fa-map-marker-alt fa-lg fa-fw me-2"></i>
+</div>
+<div class="col">
+Dabbers Social Bingo City, London
+</div>
+</div>
+<div class="row gx-1 mb-3 align-items-center">
+<div class="col-auto">
+<i class="fas fa-calendar fa-lg fa-fw me-2"></i>
+</div>
+<div class="col">
+15 June
+-
+26 October
+</div>
+</div>
+<div class="row gx-1 align-items-center">
+<div class="col-auto">
+<i class="fas fa-tag fa-lg fa-fw me-2"></i>
+</div>
+<div class="col">
+Club
+</div>
+</div>
+</div>
+</div>
+<div class="d-grid">
+<a class="btn py-3 rounded-3 fw-bold stretched-link btn-primary" href="/events/220209-dabbers-jackpot-bingo"><i class="fas fa-ticket-alt fa-lg me-2"></i>
+Buy tickets
+</a></div>
+</div>
+</div>
+</div>, <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+<div class="card border-0 shadow rounded-0 h-100 event_card_221574">
+<img src="https://nhs.ticketsforgood.co.uk/uploads/event/event_image/221574/thumb_ea55191b-07b7-4362-b162-5224ff664527.png" style="height: 102px; object-fit: cover;"/>
+<div class="card-body px-4 d-flex flex-column">
+<h5 class="card-title fw-bold mb-3">
+Viva Voulez Vous! A celebration of the music of ABBA
+</h5>
+<div class="mt-auto text-muted mb-3">
+<div class="mb-3">
+<div class="row gx-1 mb-3 align-items-center">
+<div class="col-auto">
+<i class="fas fa-map-marker-alt fa-lg fa-fw me-2"></i>
+</div>
+<div class="col">
+VIVA Blackpool, Blackpool
+</div>
+</div>
+<div class="row gx-1 mb-3 align-items-center">
+<div class="col-auto">
+<i class="fas fa-calendar fa-lg fa-fw me-2"></i>
+</div>
+<div class="col">
+28 June
+-
+12 September
+</div>
+</div>
+<div class="row gx-1 align-items-center">
+<div class="col-auto">
+<i class="fas fa-tag fa-lg fa-fw me-2"></i>
+</div>
+<div class="col">
+Music
+</div>
+</div>
+</div>
+</div>
+<div class="d-grid">
+<a class="btn py-3 rounded-3 fw-bold stretched-link btn-primary" href="/events/221574-viva-voulez-vous-a-celebration-of-the-music-of-abba"><i class="fas fa-ticket-alt fa-lg me-2"></i>
+Buy tickets
+</a></div>
+</div>
+</div>
+</div>, <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+<div class="card border-0 shadow rounded-0 h-100 event_card_221493">
+<img src="https://nhs.ticketsforgood.co.uk/uploads/event/event_image/221493/thumb_9b7b4a23-a560-431e-9bf0-6632e46ad2c5.png" style="height: 102px; object-fit: cover;"/>
+<div class="card-body px-4 d-flex flex-column">
+<h5 class="card-title fw-bold mb-3">
+Viva Country Legends - A Night At The Grand Ole Opry
+</h5>
+<div class="mt-auto text-muted mb-3">
+<div class="mb-3">
+<div class="row gx-1 mb-3 align-items-center">
+<div class="col-auto">
+<i class="fas fa-map-marker-alt fa-lg fa-fw me-2"></i>
+</div>
+<div class="col">
+VIVA Blackpool, Blackpool
+</div>
+</div>
+<div class="row gx-1 mb-3 align-items-center">
+<div class="col-auto">
+<i class="fas fa-calendar fa-lg fa-fw me-2"></i>
+</div>
+<div class="col">
+04 July
+-
+17 November
+</div>
+</div>
+<div class="row gx-1 align-items-center">
+<div class="col-auto">
+<i class="fas fa-tag fa-lg fa-fw me-2"></i>
+</div>
+<div class="col">
+Music
+</div>
+</div>
+</div>
+</div>
+<div class="d-grid">
+<a class="btn py-3 rounded-3 fw-bold stretched-link btn-primary" href="/events/221493-viva-country-legends-a-night-at-the-grand-ole-opry"><i class="fas fa-ticket-alt fa-lg me-2"></i>
+Buy tickets
+</a></div>
+</div>
+</div>
+</div>, <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+<div class="card border-0 shadow rounded-0 h-100 event_card_222417">
+<img src="https://nhs.ticketsforgood.co.uk/uploads/event/event_image/222417/thumb_74ee807b-15a3-4cfe-b818-340f78a01383.png" style="height: 102px; object-fit: cover;"/>
+<div class="card-body px-4 d-flex flex-column">
+<h5 class="card-title fw-bold mb-3">
+Hayward Gallery - Tavares Strachan: There Is Light Somewhere (Discounted Offer)
+</h5>
+<div class="mt-auto text-muted mb-3">
+<div class="mb-3">
+<div class="row gx-1 mb-3 align-items-center">
+<div class="col-auto">
+<i class="fas fa-map-marker-alt fa-lg fa-fw me-2"></i>
+</div>
+<div class="col">
+Hayward Gallery, London
+</div>
+</div>
+<div class="row gx-1 mb-3 align-items-center">
+<div class="col-auto">
+<i class="fas fa-calendar fa-lg fa-fw me-2"></i>
+</div>
+<div class="col">
+15 July
+-
+01 September
+</div>
+</div>
+<div class="row gx-1 align-items-center">
+<div class="col-auto">
+<i class="fas fa-tag fa-lg fa-fw me-2"></i>
+</div>
+<div class="col">
+Arts
+</div>
+</div>
+</div>
+</div>
+<div class="d-grid">
+<a class="btn py-3 rounded-3 fw-bold stretched-link btn-secondary" href="/events/222417-hayward-gallery-tavares-strachan-there-is-light-somewhere-discounted-offer"><i class="fas fa-ticket-alt fa-lg me-2"></i>
+Event info
+</a></div>
+</div>
+</div>
+</div>, <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+<div class="card border-0 shadow rounded-0 h-100 event_card_222558">
+<img src="https://nhs.ticketsforgood.co.uk/uploads/event/event_image/222558/thumb_5e160474-5d81-45fd-b0e2-db0a0c17772f.png" style="height: 102px; object-fit: cover;"/>
+<div class="card-body px-4 d-flex flex-column">
+<h5 class="card-title fw-bold mb-3">
+Shrek The Musical (Discounted Offer)
+</h5>
+<div class="mt-auto text-muted mb-3">
+<div class="mb-3">
+<div class="row gx-1 mb-3 align-items-center">
+<div class="col-auto">
+<i class="fas fa-map-marker-alt fa-lg fa-fw me-2"></i>
+</div>
+<div class="col">
+Eventim Apollo, London
+</div>
+</div>
+<div class="row gx-1 mb-3 align-items-center">
+<div class="col-auto">
+<i class="fas fa-calendar fa-lg fa-fw me-2"></i>
+</div>
+<div class="col">
+19 July
+-
+31 August
+</div>
+</div>
+<div class="row gx-1 align-items-center">
+<div class="col-auto">
+<i class="fas fa-tag fa-lg fa-fw me-2"></i>
+</div>
+<div class="col">
+Theatre
+</div>
+</div>
+</div>
+</div>
+<div class="d-grid">
+<a class="btn py-3 rounded-3 fw-bold stretched-link btn-primary" href="/events/222558-shrek-the-musical-discounted-offer"><i class="fas fa-ticket-alt fa-lg me-2"></i>
+Last few tickets
+</a></div>
+</div>
+</div>
+</div>, <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+<div class="card border-0 shadow rounded-0 h-100 event_card_222496">
+<img src="https://nhs.ticketsforgood.co.uk/uploads/event/event_image/222496/thumb_e75efa72-dc11-413a-ba22-7140142d26d6.png" style="height: 102px; object-fit: cover;"/>
+<div class="card-body px-4 d-flex flex-column">
+<h5 class="card-title fw-bold mb-3">
+Betfred Super League: Salford Red Devils 2024 Home Games
+</h5>
+<div class="mt-auto text-muted mb-3">
+<div class="mb-3">
+<div class="row gx-1 mb-3 align-items-center">
+<div class="col-auto">
+<i class="fas fa-map-marker-alt fa-lg fa-fw me-2"></i>
+</div>
+<div class="col">
+Salford Community Stadium, Salford
+</div>
+</div>
+<div class="row gx-1 mb-3 align-items-center">
+<div class="col-auto">
+<i class="fas fa-calendar fa-lg fa-fw me-2"></i>
+</div>
+<div class="col">
+27 July
+-
+07 September
+</div>
+</div>
+<div class="row gx-1 align-items-center">
+<div class="col-auto">
+<i class="fas fa-tag fa-lg fa-fw me-2"></i>
+</div>
+<div class="col">
+Family &amp; Attractions, Sport
+</div>
+</div>
+</div>
+</div>
+<div class="d-grid">
+<a class="btn py-3 rounded-3 fw-bold stretched-link btn-light text-muted bg-disabled" href="/events/222496-betfred-super-league-salford-red-devils-2024-home-games"><i class="fas fa-ticket-alt fa-lg me-2"></i>
+Sold out
+</a></div>
+</div>
+</div>
+</div>, <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+<div class="card border-0 shadow rounded-0 h-100 event_card_222158">
+<img src="https://nhs.ticketsforgood.co.uk/uploads/event/event_image/222158/thumb_19c3acc0-0996-4b1d-80dd-f0e54f4dd047.png" style="height: 102px; object-fit: cover;"/>
+<div class="card-body px-4 d-flex flex-column">
+<h5 class="card-title fw-bold mb-3">
+Bongo's Bingo
+</h5>
+<div class="mt-auto text-muted mb-3">
+<div class="mb-3">
+<div class="row gx-1 mb-3 align-items-center">
+<div class="col-auto">
+<i class="fas fa-map-marker-alt fa-lg fa-fw me-2"></i>
+</div>
+<div class="col">
+The Clapham Grand, London
+</div>
+</div>
+<div class="row gx-1 mb-3 align-items-center">
+<div class="col-auto">
+<i class="fas fa-calendar fa-lg fa-fw me-2"></i>
+</div>
+<div class="col">
+02 August
+-
+06 September
+</div>
+</div>
+<div class="row gx-1 align-items-center">
+<div class="col-auto">
+<i class="fas fa-tag fa-lg fa-fw me-2"></i>
+</div>
+<div class="col">
+Nightlife
+</div>
+</div>
+</div>
+</div>
+<div class="d-grid">
+<a class="btn py-3 rounded-3 fw-bold stretched-link btn-primary" href="/events/222158-bongo-s-bingo"><i class="fas fa-ticket-alt fa-lg me-2"></i>
+Buy tickets
+</a></div>
+</div>
+</div>
+</div>]
