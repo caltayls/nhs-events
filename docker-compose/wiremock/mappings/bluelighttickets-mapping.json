@@ -1,7 +1,7 @@
 {
     "request": {
         "method": "GET",
-        "url": "/bluelighttickets"
+        "urlPathPattern": "/bluelighttickets(/.*)?"
     },
     "response": {
         "status": 200,

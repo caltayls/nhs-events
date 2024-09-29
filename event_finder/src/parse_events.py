@@ -29,6 +29,7 @@ class EventParser:
             info_all_sites = json.load(file)
         self.site_info = info_all_sites[self.website]
 
+
     async def fetch_html(self) -> list[str]:
         "Returns list of raw event card html"
 
@@ -48,10 +49,10 @@ class EventParser:
                 last_page_num_el = soup.select(self.site_info['LAST_PAGE_ELEMENT_SEL'])[-1]['href']
                 last_page_num = int(re.search(self.site_info['LAST_PAGE_TEXT_PAT'], last_page_num_el).group(1))
                 
+            logger.debug(f"{self.website}: {last_page_num} pages")
             # Iterate through pages and collect event_card_html.
-            # Pages are scraped concurrently (set to two to reduce traffic)
             tasks = []
-            sem = asyncio.Semaphore(2)  # Restricts concurrent tasks to 2
+            sem = asyncio.Semaphore(4)  # Restricts concurrent tasks 
             for i in range(last_page_num):
                 page_ext = self.site_info['PAGE_QUERY_REL_PATH']
                 if self.website != 'concertsforcarers':
@@ -143,7 +144,7 @@ class EventParser:
             return event_dic
 
 
-    async def login(self, session):
+    async def login(self, session: aiohttp.ClientSession):
         "Log in to tfg"
         # Get the authenticity token from the login page
         email = os.getenv("TFG_EMAIL")
@@ -155,48 +156,42 @@ class EventParser:
         form = soup.select_one("form.simple_form[action='/users/sign_in']")
         authenticity_token = form.select_one("input[name*='auth']")['value']
         login_data = {
-            'authenticity_token': authenticity_token,  # can't log in without token
+            'authenticity_token': authenticity_token, # csrf
             'user[email]': email,
-            'user[password]': pw,
-            'commit': 'Log in'  # this posts the log in
+            'user[password]': pw
         }
-        headers = {
-            'Referer': login_url,
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'
-        }
+        # headers = {
+        #     'Referer': login_url,
+        #     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'
+        # }
 
-        await session.post(login_url, data=login_data, headers=headers)
-
-
-    def is_logged_in(self, soup):
-        """Check if ticketsforgood log in was successful."""
-        login_btn = soup.select_one("nav a.btn")
-        if login_btn:
-            raise Exception("could not log in to tickets for good")
-        return True
+        resp = await session.post(login_url, data=login_data)  #, headers=headers)
+        logger.debug(f"tfg status: {resp.status}")
+        return resp
 
 
-    async def main(self):
+    async def aysnc_task_cont(self) -> pd.DataFrame:
         """Runs the entire process for a single website, i.e. gets html, parses and returns df"""
         cards_html = await self.fetch_html()
         event_df = self.html_to_dataframe(cards_html)
         return event_df
 
-    @staticmethod
-    def new_events():
-        """A synchronous method that can be used without asyncio."""
-        loop = asyncio.get_event_loop()
-        return loop.run_until_complete(EventParser._fetch_all())
 
     @staticmethod
-    async def _fetch_all():
+    def get_events() -> pd.DataFrame:
+        """A synchronous method that can be used without asyncio."""
+        loop = asyncio.get_event_loop()
+        return loop.run_until_complete(EventParser.async_task_runner())
+
+    @staticmethod
+    async def async_task_runner() -> pd.DataFrame:
         """Get all events from all websites"""
         parser1 = EventParser('bluelighttickets')
         parser2 = EventParser('ticketsforgood')
         parser3 = EventParser('concertsforcarers')
         tasks = []
         for p in [parser1, parser2, parser3]:
-            task = asyncio.create_task(p.main())
+            task = asyncio.create_task(p.aysnc_task_cont())
             tasks.append(task)
         df_array = await asyncio.gather(*tasks)
         event_df = EventParser.reformat_df(df_array)

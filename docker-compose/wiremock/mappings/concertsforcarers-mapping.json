@@ -1,7 +1,7 @@
 {
     "request": {
         "method": "GET",
-        "url": "/concertsforcarers"
+        "urlPathPattern": "/concertsforcarers(/*)?"
     },
     "response": {
         "status": 200,

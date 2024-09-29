@@ -1,24 +1,24 @@
 {
   "bluelighttickets": {
-    "URL_BASE": "localhost:8080",
-    "FIRST_PAGE_REL_PATH": "/bluelighttickets",
-    "PAGE_QUERY_REL_PATH": "/bluelighttickets",
+    "URL_BASE": "http://localhost:8080/bluelighttickets",
+    "FIRST_PAGE_REL_PATH": "/event/all/",
+    "PAGE_QUERY_REL_PATH": "/event/all/",
     "LAST_PAGE_ELEMENT_SEL": "a.page-link",
     "LAST_PAGE_TEXT_PAT": "all/(\\d+)",
     "EVENT_CARD_SEL": "#events .col-lg-4"
   },
   "ticketsforgood": {
-    "URL_BASE": "localhost:8080",
-    "FIRST_PAGE_REL_PATH": "/ticketsforgood",
-    "PAGE_QUERY_REL_PATH": "/ticketsforgood",
+    "URL_BASE": "http://localhost:8080/ticketsforgood",
+    "FIRST_PAGE_REL_PATH": "",
+    "PAGE_QUERY_REL_PATH": "/?page=",
     "LAST_PAGE_ELEMENT_SEL": "li.page-item a",
     "LAST_PAGE_TEXT_PAT": "(\\d+)",
-    "EVENT_CARD_SEL": "div[class*='col-xl']"
+    "EVENT_CARD_SEL": "div[class*='event_card']"
   },
   "concertsforcarers": {
-    "URL_BASE": "localhost:8080",
-    "FIRST_PAGE_REL_PATH": "/concertsforcarers",
-    "PAGE_QUERY_REL_PATH": "/concertsforcarers",
+    "URL_BASE": "http://localhost:8080/concertsforcarers",
+    "FIRST_PAGE_REL_PATH": "",
+    "PAGE_QUERY_REL_PATH": "",
     "LAST_PAGE_ELEMENT_SEL": "",
     "LAST_PAGE_TEXT_PAT": "",
     "EVENT_CARD_SEL": "li.event"

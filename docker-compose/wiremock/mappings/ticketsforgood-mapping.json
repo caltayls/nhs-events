@@ -1,7 +1,7 @@
 {
     "request": {
         "method": "GET",
-        "url": "/ticketsforgood"
+        "urlPathPattern": "/ticketsforgood(/*)?"
     },
     "response": {
         "status": 200,
