@@ -10,11 +10,13 @@ def add_end_date_to_df(df: pd.DataFrame) -> pd.DataFrame:
     dates_with_start_end = df[df.date.str.contains('-')].copy()
     single_date = df[~df.date.str.contains('-')].copy()
 
-    # Expand dates with start-end into two sep cols
-    dates_separated = dates_with_start_end['date'].str.split('-', expand=True, )
-    dates_separated.columns = ['date_start', 'date_end']
-    dates_with_start_end = dates_with_start_end.join(dates_separated)
-    dates_with_start_end = dates_with_start_end.drop(['date_start'], axis=1)
+
+    if len(dates_with_start_end) != 0:
+        # Expand dates with start-end into two sep cols
+        dates_separated = dates_with_start_end['date'].str.split('-', expand=True, )
+        dates_separated.columns = ['date_start', 'date_end']
+        dates_with_start_end = dates_with_start_end.join(dates_separated)
+        dates_with_start_end = dates_with_start_end.drop(['date_start'], axis=1)
 
     # Add end date to single date records
     single_date['date_end'] = single_date.date

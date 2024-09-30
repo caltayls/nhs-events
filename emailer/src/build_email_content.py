@@ -46,7 +46,7 @@ def create_email_html(events: pd.DataFrame) -> list[dict]:
 
 def construct_html(strftime:str, ):
     
-
+    # iterate over users who are hourly and all locations
     for user in users_all_times.itertuples():
         html = render_html(events, user.uuid)
         obj = {

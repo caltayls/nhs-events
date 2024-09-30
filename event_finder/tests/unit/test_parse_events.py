@@ -10,7 +10,7 @@ from src.parse_events import EventParser
 
 @pytest.fixture
 def mock_site_info():
-    with open(r"event_finder/tests/site_info.json", 'r') as f:
+    with open(r"event_finder/tests/resources/site_info.json", 'r') as f:
         return json.load(f)
 
 
@@ -43,12 +43,12 @@ async def test_parse_event_cards(mocker, mock_site_info):
 
 def test_parse_card_info():
     
-        # Setup
+    # Setup
     websites = ['concertsforcarers', 'bluelighttickets', 'ticketsforgood']
 
     for website in websites:
 
-        with open(f"event_finder/tests/test_{website}_card_html.json", 'r') as f:
+        with open(f"event_finder/tests/resources/test_{website}_card_html.json", 'r') as f:
             card_dict = json.load(f)
         
         cards = [bs4.BeautifulSoup(card, 'html.parser') for card in card_dict.values()]
@@ -56,7 +56,7 @@ def test_parse_card_info():
         # Act
         ep = EventParser(website)
         results = {i: ep.parse_card_info(card) for i, card in enumerate(cards)}
-        with open(f"event_finder/tests/test_{website}_cards_parsed.json", 'w') as f:
+        with open(f"event_finder/tests/resources/test_{website}_cards_parsed.json", 'w') as f:
             card_dict = json.dump(results, f)
         
         # Assert
@@ -97,16 +97,21 @@ def test_parse_card_info():
 
 def test_html_to_dataframe(mocker):
     # Setup
-    with open("event_finder/tests/test_event_cards_parsed.json", 'r') as f:
-        card_dict = json.load(f)
 
-    mock_parse_card_info = mocker.Mock()
-    mock_parse_card_info.side_effect = card_dict.values()
-    mocker.patch("src.parse_events.EventParser.parse_card_info", mock_parse_card_info)
-    
-    # Act
-    ep = EventParser('ticketsforgood')
-    result = ep.html_to_dataframe(range(len(card_dict)))
+    websites = ['ticketsforgood']
+
+    for website in websites:
+
+        with open(f"event_finder/tests/resources/test_{website}_cards_parsed.json", 'r') as f:
+            card_dict = json.load(f)
+
+        mock_parse_card_info = mocker.Mock()
+        mock_parse_card_info.side_effect = card_dict.values()
+        mocker.patch("src.parse_events.EventParser.parse_card_info", mock_parse_card_info)
+        
+        # Act
+        ep = EventParser(website)
+        result = ep.html_to_dataframe(range(len(card_dict)))
 
     # Assert
     df_row1 = {
@@ -123,29 +128,32 @@ def test_html_to_dataframe(mocker):
 
 def test_reformat_df():
     # Setup
-    df_unformatted = [pd.read_json("event_finder/tests/test_df_results.json", orient='records')]
+    websites = ['concertsforcarers', 'bluelighttickets', 'ticketsforgood']
+    dfs = []
+    for website in websites:
+        dfs.append(pd.read_json(f"event_finder/tests/resources/test_{website}_df_results.json", orient='records', convert_dates=False))
 
     # Act
-    result = EventParser.reformat_df(df_unformatted)
+    result = EventParser.reformat_df(dfs)
     
     # Assert
     formatted_df_idx7 = {
         "index": 7,
-        "event_name": "Viva Country Legends - A Night At The Grand Ole Opry",
-        "event_type": "Music",
-        "location": "VIVA Blackpool, Blackpool",
-        "date": "04 July-17 November",
-        "url": "https://nhs.ticketsforgood.co.uk/events/221493-viva-country-legends-a-night-at-the-grand-ole-opry",
-        "website": "https://nhs.ticketsforgood.co.uk",
-        "website_name": "ticketsforgood",
-        "date_end": 1731801600000
+        "event_name": "Cafe Mambo Ibiza Classics On The Beach",
+        "location": "Weston Super Mare Beach in Weston Super-Mare",
+        "date": "September 7, 2024",
+        "url": "https://www.concertsforcarers.org.uk/events/cafe-mambo-ibiza-classics-on-the-beach-4643-weston-super-mare-beach-in-weston-super-mare-sep-7-2024",
+        "website": "https://www.concertsforcarers.org.uk",
+        "event_type": None,
+        "website_name": "concertsforcarers",
+        "date_end": "2024-09-07T00:00:00.000"
     }
 
     row8 = result.loc[7]
     assert row8['event_name'] == formatted_df_idx7['event_name']
     assert row8['location'] == formatted_df_idx7['location']
     assert row8['url'] == formatted_df_idx7['url']
-    assert row8['date_end'] == pd.to_datetime(formatted_df_idx7['date_end'], unit='ms')
+    assert row8['date_end'] == pd.to_datetime(formatted_df_idx7['date_end'])
     assert row8['website_name'] == formatted_df_idx7['website_name']
 
 
