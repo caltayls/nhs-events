@@ -4,6 +4,7 @@ import json
 import os
 import aiohttp
 import logging
+from datetime import datetime
 from bs4 import BeautifulSoup, ResultSet, Tag
 import pandas as pd
 from dotenv import load_dotenv
@@ -207,4 +208,6 @@ class EventParser:
         event_df.website_name = event_df.website_name.str.replace(r"\.\w+(\.w+)?", '', regex=True)  # Remove domain (.com etc)
         event_df = add_end_date_to_df(event_df)
         event_df['url'] = event_df.website + event_df.url
+        fmt = '%Y-%m-%dT%H:%M:%S'
+        event_df['created_at'] = datetime.today().strftime(fmt)
         return event_df

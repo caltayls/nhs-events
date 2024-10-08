@@ -1,0 +1,28 @@
+{
+    "Items": [
+        {
+           "uuid":"uuid1",
+           "frequency":"hourly",
+           "email":"email1@email",
+           "locations": ["All"]
+        },
+        {
+           "uuid":"uuid2",
+           "frequency":"hourly",
+           "email":"email2@email",
+           "locations": ["Tyne & Wear","Cambridgeshire"]
+        },
+        {
+           "uuid":"uuid3",
+           "frequency":"daily",
+           "email":"email3@email",
+           "locations": ["Tyne & Wear","Cambridgeshire","Greater Manchester"]
+        },
+        {
+           "uuid":"uuid4",
+           "frequency":"weekly",
+           "email":"email4@email",
+           "locations": ["All"]
+        }
+    ]
+}

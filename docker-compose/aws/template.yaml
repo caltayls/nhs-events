@@ -1,0 +1,26 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  AWS resources local setup
+  
+  Resources included:
+  - DynamoDB
+
+Resources:
+  UserTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: users
+      AttributeDefinitions: 
+        - AttributeName: freq
+          AttributeType: S
+        - AttributeName: uuid
+          AttributeType: S
+      KeySchema:
+        - AttributeName: freq
+          KeyType: HASH
+        - AttributeName: uuid
+          KeyType: RANGE
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5

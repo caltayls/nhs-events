@@ -1,106 +1,46 @@
+from io import BytesIO
 import pandas as pd
 import os
-import datetime
+import boto3
 from dotenv import load_dotenv
-from src.html_generator import render_html
+from datetime import datetime
+from emailer.src import utils, html_generator
 from aws_utils.utils import AWSTools
-from aws_utils.load_dynamodb import load_dynamodb
-from src.utils import get_areas_from_county
 
 load_dotenv()
 
 AWS_BUCKET = os.getenv("AWS_BUCKET")
 SOURCE_EMAIL_ADDRESS = os.getenv("SOURCE_EMAIL_ADDRESS")
 ACTIVE_EVENTS_FILENAME = os.getenv("ACTIVE_EVENTS_FILENAME")
-LOCATIONS_CSV_ENDPOINT = os.getenv("LOCATIONS_CSV_ENDPOINT")
+LOCATIONS_CSV_FILENAME = os.getenv("LOCATIONS_CSV_ENDPOINT")
 
-active_events = AWSTools.bucket_to_df(ACTIVE_EVENTS_FILENAME, AWS_BUCKET)
-active_events.time_added = pd.to_datetime(
-    active_events.time_added, format='%d/%m/%y-%H:%M'
-)
-active_events = active_events.dropna().sort_values("time_added")
+s3 = boto3.client('s3')
+location_df = AWSTools.bucket_to_df(LOCATIONS_CSV_FILENAME, AWS_BUCKET)
+events_df = AWSTools.bucket_to_df(ACTIVE_EVENTS_FILENAME, AWS_BUCKET)
 
+today = datetime.today()
 
-# db sort key should be email frequency so only necessary items are loaded
+def user_html(user: pd.Series) -> dict[str]:
+    freq = user['freq']
+    user_locs = utils.get_areas_from_county(user, location_df)
+    # locs_str = '|'.join(user_locs.values)
 
-def create_email_html(events: pd.DataFrame) -> list[dict]:
-    """returns list of dicts of:
-        {
-            email_address: qweqwre@dfs.com,
-            html: html
-        }
-    """
+    events_df = events_df[events_df['location'].isin(user_locs)]
 
-    email_addr_content = []
+    weekly_events = events_df[events_df['created_at'].dt.isocalendar()["week"] == today.isocalendar()[1]] 
+    today_events = events_df[events_df['created_at'].dt.date == today.date()]
+    hourly_events = today_events[today_events['created_at'].dt.hour == today.hour]
 
-    dt_now = datetime.datetime.now()
-
-    users_df = load_dynamodb()
-
- 
-
-# for freq group:
-# filter events if necessary
-# send to users who want all locs
-# send to rest
-
-def construct_html(strftime:str, ):
+    if freq == "hourly":
+        html =  html_generator.render_html(hourly_events)
+    elif freq == "daily":
+        html = html_generator.render_html(today_events)
+    else:
+        html = html_generator.render_html(weekly_events)
     
-    # iterate over users who are hourly and all locations
-    for user in users_all_times.itertuples():
-        html = render_html(events, user.uuid)
-        obj = {
-            'email_address': user.email,
-            'html': html
-        }
-        email_addr_content.append(obj)
+    return {
+        "email": user['email'],
+        'html': html
+    }
 
-    # remaining users
-    users_remaining = users_df[(users_df.frequency != "hourly") & (users_df.locations != ["All"])]
-    location_df = pd.read_csv(LOCATIONS_CSV_ENDPOINT, index_col=0)
 
-    for user in users_remaining.itertuples():
-        # hourly
-        user_areas = get_areas_from_county(user, location_df)
-        events_refined = events[
-            events.location.str.contains(
-                "|".join(user_areas), regex=True
-            )
-        ]  # creates regex or expr
-        if user.frequency == "hourly":
-            if len(events_refined) == 0:
-                continue
-            html = render_html(events_refined, user.uuid)
-            print("=========================")
-            print(user.email)
-            print(html)
-            # daily
-        elif dt_now.hour == 17:
-            daily_events = events_refined[
-                events_refined.time_added.dt.strftime("%d%m") == dt_now.strftime("%d%m")
-            ]
-            if len(daily_events) == 0:
-                continue
-            html = render_html(daily_events, user.uuid)
-            print("=========================")
-            print(user.email)
-
-        # weekly at 1700 on Fridays
-        elif (dt_now.strftime("%A %H") == "Friday 17"):
-            weekly_events = events_refined.loc[
-                events_refined.time_added.dt.isocalendar().week == dt_now.isocalendar()[1]
-            ]
-            if len(weekly_events) == 0:
-                continue
-
-            html = render_html(daily_events, user.uuid)
-            print("=========================")
-            print(user.email)
-
-        obj = {
-            'email_address': user.email,
-            'html': html
-        }
-        email_addr_content.append(obj)
-
-    return email_addr_content

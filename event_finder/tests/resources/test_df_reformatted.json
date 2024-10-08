@@ -8,7 +8,8 @@
         "website": "https:\/\/www.concertsforcarers.org.uk",
         "event_type": null,
         "website_name": "concertsforcarers",
-        "date_end": "2024-09-01T00:00:00.000"
+        "date_end": "2024-09-01T00:00:00.000",
+        "created_at": "2024-10-11T12:00:00"
     },
     {
         "index": 1,
@@ -19,7 +20,9 @@
         "website": "https:\/\/www.concertsforcarers.org.uk",
         "event_type": null,
         "website_name": "concertsforcarers",
-        "date_end": "2024-09-02T00:00:00.000"
+        "date_end": "2024-09-02T00:00:00.000",
+        "created_at": "2024-10-07T12:00:00"
+
     },
     {
         "index": 2,
@@ -30,7 +33,9 @@
         "website": "https:\/\/www.concertsforcarers.org.uk",
         "event_type": null,
         "website_name": "concertsforcarers",
-        "date_end": "2024-09-03T00:00:00.000"
+        "date_end": "2024-09-03T00:00:00.000",
+        "created_at": "2024-10-08T12:00:00"
+
     },
     {
         "index": 3,
@@ -41,7 +46,9 @@
         "website": "https:\/\/www.concertsforcarers.org.uk",
         "event_type": null,
         "website_name": "concertsforcarers",
-        "date_end": "2024-09-05T00:00:00.000"
+        "date_end": "2024-09-05T00:00:00.000",
+        "created_at": "2024-10-09T12:00:00"
+
     },
     {
         "index": 4,
@@ -52,7 +59,9 @@
         "website": "https:\/\/www.concertsforcarers.org.uk",
         "event_type": null,
         "website_name": "concertsforcarers",
-        "date_end": "2024-09-06T00:00:00.000"
+        "date_end": "2024-09-06T00:00:00.000",
+        "created_at": "2024-10-10T12:00:00"
+
     },
     {
         "index": 5,
@@ -63,7 +72,9 @@
         "website": "https:\/\/www.concertsforcarers.org.uk",
         "event_type": null,
         "website_name": "concertsforcarers",
-        "date_end": "2024-09-06T00:00:00.000"
+        "date_end": "2024-09-06T00:00:00.000",
+        "created_at": "2024-10-11T13:00:00"
+
     },
     {
         "index": 6,
@@ -74,7 +85,9 @@
         "website": "https:\/\/www.concertsforcarers.org.uk",
         "event_type": null,
         "website_name": "concertsforcarers",
-        "date_end": "2024-09-07T00:00:00.000"
+        "date_end": "2024-09-07T00:00:00.000",
+        "created_at": "2024-10-11T14:00:00"
+
     },
     {
         "index": 7,
@@ -85,7 +98,9 @@
         "website": "https:\/\/www.concertsforcarers.org.uk",
         "event_type": null,
         "website_name": "concertsforcarers",
-        "date_end": "2024-09-07T00:00:00.000"
+        "date_end": "2024-09-07T00:00:00.000",
+        "created_at": "2024-10-07T12:00:00"
+
     },
     {
         "index": 8,
@@ -96,7 +111,9 @@
         "website": "https:\/\/www.concertsforcarers.org.uk",
         "event_type": null,
         "website_name": "concertsforcarers",
-        "date_end": "2024-09-07T00:00:00.000"
+        "date_end": "2024-09-07T00:00:00.000",
+        "created_at": "2024-10-07T12:00:00"
+
     },
     {
         "index": 9,
@@ -107,7 +124,9 @@
         "website": "https:\/\/www.concertsforcarers.org.uk",
         "event_type": null,
         "website_name": "concertsforcarers",
-        "date_end": "2024-09-07T00:00:00.000"
+        "date_end": "2024-09-07T00:00:00.000",
+        "created_at": "2024-10-07T12:00:00"
+
     },
     {
         "index": 10,
@@ -118,7 +137,9 @@
         "website": "https:\/\/www.concertsforcarers.org.uk",
         "event_type": null,
         "website_name": "concertsforcarers",
-        "date_end": "2024-09-08T00:00:00.000"
+        "date_end": "2024-09-08T00:00:00.000",
+        "created_at": "2024-10-07T12:00:00"
+
     },
     {
         "index": 0,
@@ -129,7 +150,9 @@
         "website": "https:\/\/bluelighttickets.co.uk",
         "event_type": null,
         "website_name": "bluelighttickets",
-        "date_end": "2025-08-29T00:00:00.000"
+        "date_end": "2025-08-29T00:00:00.000",
+        "created_at": "2024-10-07T12:00:00"
+
     },
     {
         "index": 1,
@@ -140,7 +163,9 @@
         "website": "https:\/\/bluelighttickets.co.uk",
         "event_type": null,
         "website_name": "bluelighttickets",
-        "date_end": "2025-08-30T00:00:00.000"
+        "date_end": "2025-08-30T00:00:00.000",
+        "created_at": "2024-10-07T12:00:00"
+
     },
     {
         "index": 2,
@@ -151,7 +176,9 @@
         "website": "https:\/\/bluelighttickets.co.uk",
         "event_type": null,
         "website_name": "bluelighttickets",
-        "date_end": "2025-08-30T00:00:00.000"
+        "date_end": "2025-08-30T00:00:00.000",
+        "created_at": "2024-10-07T12:00:00"
+
     },
     {
         "index": 3,
@@ -162,7 +189,9 @@
         "website": "https:\/\/bluelighttickets.co.uk",
         "event_type": null,
         "website_name": "bluelighttickets",
-        "date_end": "2025-08-31T00:00:00.000"
+        "date_end": "2025-08-31T00:00:00.000",
+        "created_at": "2024-10-06T12:00:00"
+
     },
     {
         "index": 4,
@@ -173,7 +202,9 @@
         "website": "https:\/\/bluelighttickets.co.uk",
         "event_type": null,
         "website_name": "bluelighttickets",
-        "date_end": "2025-08-31T00:00:00.000"
+        "date_end": "2025-08-31T00:00:00.000",
+        "created_at": "2024-10-07T12:00:00"
+
     },
     {
         "index": 5,
@@ -184,7 +215,9 @@
         "website": "https:\/\/bluelighttickets.co.uk",
         "event_type": null,
         "website_name": "bluelighttickets",
-        "date_end": "2025-08-31T00:00:00.000"
+        "date_end": "2025-08-31T00:00:00.000",
+        "created_at": "2024-10-07T12:00:00"
+
     },
     {
         "index": 6,
@@ -195,7 +228,9 @@
         "website": "https:\/\/bluelighttickets.co.uk",
         "event_type": null,
         "website_name": "bluelighttickets",
-        "date_end": "2025-08-31T00:00:00.000"
+        "date_end": "2025-08-31T00:00:00.000",
+        "created_at": "2024-10-07T12:00:00"
+
     },
     {
         "index": 7,
@@ -206,7 +241,9 @@
         "website": "https:\/\/bluelighttickets.co.uk",
         "event_type": null,
         "website_name": "bluelighttickets",
-        "date_end": "2024-09-01T00:00:00.000"
+        "date_end": "2024-09-01T00:00:00.000",
+        "created_at": "2024-10-07T12:00:00"
+
     },
     {
         "index": 8,
@@ -217,7 +254,9 @@
         "website": "https:\/\/bluelighttickets.co.uk",
         "event_type": null,
         "website_name": "bluelighttickets",
-        "date_end": "2024-09-03T00:00:00.000"
+        "date_end": "2024-09-03T00:00:00.000",
+        "created_at": "2024-10-07T12:00:00"
+
     },
     {
         "index": 0,
@@ -228,7 +267,9 @@
         "website": "https:\/\/nhs.ticketsforgood.co.uk",
         "event_type": "Festivals",
         "website_name": "ticketsforgood",
-        "date_end": "2024-09-21T00:00:00.000"
+        "date_end": "2024-09-21T00:00:00.000",
+        "created_at": "2024-10-07T12:00:00"
+
     },
     {
         "index": 1,
@@ -239,7 +280,9 @@
         "website": "https:\/\/nhs.ticketsforgood.co.uk",
         "event_type": "Family & Attractions, Theatre",
         "website_name": "ticketsforgood",
-        "date_end": "2024-12-31T00:00:00.000"
+        "date_end": "2024-12-31T00:00:00.000",
+        "created_at": "2024-10-07T12:00:00"
+
     },
     {
         "index": 2,
@@ -250,7 +293,9 @@
         "website": "https:\/\/nhs.ticketsforgood.co.uk",
         "event_type": "Music, Theatre",
         "website_name": "ticketsforgood",
-        "date_end": "2024-09-21T00:00:00.000"
+        "date_end": "2024-09-21T00:00:00.000",
+        "created_at": "2024-10-07T12:00:00"
+
     },
     {
         "index": 3,
@@ -261,7 +306,9 @@
         "website": "https:\/\/nhs.ticketsforgood.co.uk",
         "event_type": "Sport",
         "website_name": "ticketsforgood",
-        "date_end": "2024-09-29T00:00:00.000"
+        "date_end": "2024-09-29T00:00:00.000",
+        "created_at": "2024-10-07T12:00:00"
+
     },
     {
         "index": 4,
@@ -272,7 +319,9 @@
         "website": "https:\/\/nhs.ticketsforgood.co.uk",
         "event_type": "Theatre",
         "website_name": "ticketsforgood",
-        "date_end": "2024-11-27T00:00:00.000"
+        "date_end": "2024-11-27T00:00:00.000",
+        "created_at": "2024-10-07T12:00:00"
+
     },
     {
         "index": 5,
@@ -283,7 +332,9 @@
         "website": "https:\/\/nhs.ticketsforgood.co.uk",
         "event_type": "Club",
         "website_name": "ticketsforgood",
-        "date_end": "2024-10-26T00:00:00.000"
+        "date_end": "2024-10-26T00:00:00.000",
+        "created_at": "2024-10-07T12:00:00"
+
     },
     {
         "index": 6,
@@ -294,7 +345,9 @@
         "website": "https:\/\/nhs.ticketsforgood.co.uk",
         "event_type": "Music",
         "website_name": "ticketsforgood",
-        "date_end": "2024-09-12T00:00:00.000"
+        "date_end": "2024-09-12T00:00:00.000",
+        "created_at": "2024-10-07T12:00:00"
+
     },
     {
         "index": 7,
@@ -305,7 +358,9 @@
         "website": "https:\/\/nhs.ticketsforgood.co.uk",
         "event_type": "Music",
         "website_name": "ticketsforgood",
-        "date_end": "2024-11-17T00:00:00.000"
+        "date_end": "2024-11-17T00:00:00.000",
+        "created_at": "2024-10-11T10:00:00"
+
     },
     {
         "index": 8,
@@ -316,7 +371,9 @@
         "website": "https:\/\/nhs.ticketsforgood.co.uk",
         "event_type": "Arts",
         "website_name": "ticketsforgood",
-        "date_end": "2024-09-01T00:00:00.000"
+        "date_end": "2024-09-01T00:00:00.000",
+        "created_at": "2024-10-11T09:00:00"
+
     },
     {
         "index": 9,
@@ -327,7 +384,9 @@
         "website": "https:\/\/nhs.ticketsforgood.co.uk",
         "event_type": "Theatre",
         "website_name": "ticketsforgood",
-        "date_end": "2025-08-31T00:00:00.000"
+        "date_end": "2025-08-31T00:00:00.000",
+        "created_at": "2024-10-11T17:00:00"
+
     },
     {
         "index": 10,
@@ -338,7 +397,9 @@
         "website": "https:\/\/nhs.ticketsforgood.co.uk",
         "event_type": "Family & Attractions, Sport",
         "website_name": "ticketsforgood",
-        "date_end": "2024-09-07T00:00:00.000"
+        "date_end": "2024-09-07T00:00:00.000",
+        "created_at": "2024-10-11T17:00:00"
+
     },
     {
         "index": 11,
@@ -349,6 +410,8 @@
         "website": "https:\/\/nhs.ticketsforgood.co.uk",
         "event_type": "Nightlife",
         "website_name": "ticketsforgood",
-        "date_end": "2024-09-06T00:00:00.000"
+        "date_end": "2024-09-06T00:00:00.000",
+        "created_at": "2024-10-11T17:00:00"
+
     }
 ]
