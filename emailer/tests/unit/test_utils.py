@@ -52,7 +52,7 @@ def test_get_users_hourly(mocker, mock_datetime):
     # Act
     actual = utils.get_users()
 
-    #Assert
+    # Assert
     calls = mock_table.query.call_args_list
     assert calls[0][1]['KeyConditionExpression']._values[1] == 'hourly'
 

@@ -1,9 +1,0 @@
-{
-  "version": "1",
-  "name": "tfg_bruno",
-  "type": "collection",
-  "ignore": [
-    "node_modules",
-    ".git"
-  ]
-}
