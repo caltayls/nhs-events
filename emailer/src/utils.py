@@ -14,7 +14,8 @@ def get_areas_from_county(user_row, location_df) -> pd.Series:
 	user_counties = pd.DataFrame(user_locs, columns=["County"])
 	return location_df.merge(user_counties,  how="inner")["Built-up area"]
 
-def get_users():
+def get_users() -> list[dict]:
+	"filters users based on their freq preference and date/time"
 	dynamo = boto3.client("dynamodb")
 	table = dynamo.Table("users")
 

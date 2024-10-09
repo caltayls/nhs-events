@@ -86,10 +86,6 @@ async def email_all_subscribers(email_addr_html_content: list[dict]) -> None:
         await asyncio.gather(*tasks)
 
 
-def lambda_handler(event, context):
-    email_and_content = event['sdfsdf']['sdfsdfsdf']
-    asyncio.run(email_all_subscribers(email_and_content))
-
 
 
 if __name__ == '__main__':
