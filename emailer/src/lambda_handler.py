@@ -1,4 +1,3 @@
-import asyncio
 import pandas as pd
 from emailer.src import emailer2, build_email_content, utils
 

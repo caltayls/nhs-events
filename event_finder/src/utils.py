@@ -10,7 +10,6 @@ def add_end_date_to_df(df: pd.DataFrame) -> pd.DataFrame:
     dates_with_start_end = df[df.date.str.contains('-')].copy()
     single_date = df[~df.date.str.contains('-')].copy()
 
-
     if len(dates_with_start_end) != 0:
         # Expand dates with start-end into two sep cols
         dates_separated = dates_with_start_end['date'].str.split('-', expand=True, )
