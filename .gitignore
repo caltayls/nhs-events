@@ -6,8 +6,20 @@ __pycache__/
 # C extensions
 *.so
 
+# intellij
+.idea
 
+# Terraform
+.terraform*
+.coverage
+terraform.tfstate*
+
+
+# docker-compose 
 cache/
+volume/
+__files
+
 
 #csv
 # *.csv

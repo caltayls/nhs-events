@@ -1,6 +1,6 @@
 import asyncio
 import pandas as pd
-from emailer.src import emailer, build_email_content, utils
+from emailer.src import emailer2, build_email_content, utils
 
 def lambda_handler(event, context):
     
@@ -8,7 +8,18 @@ def lambda_handler(event, context):
     event_df = pd.DataFrame(events)
     users = utils.get_users()
 
-    user_html = [build_email_content.user_html(user, event_df) for user in users]
+    messages = [build_email_content.user_html(user, event_df) for user in users]
 
-    asyncio.run(emailer.email_all_subscribers(user_html))
+    client = emailer2.Client.from_env()
+    for message in messages:
+        client.construct_email(
+            to = message['email'],
+            subject="New Events",
+            body=message['html']
+        )
+    client.send_emails()
 
+    return {
+        'status': 200
+    }
+        

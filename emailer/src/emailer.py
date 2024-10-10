@@ -19,6 +19,7 @@ SCOPES = ["https://www.googleapis.com/auth/gmail.send"]
 
 def get_creds():
     """Shows basic usage of the Gmail API."""
+    print(os.getenv('TOKEN'))
 
     creds = Credentials(**{
         "token": os.getenv('TOKEN'),
@@ -58,7 +59,7 @@ def send_email_sync(email_address, body_html):
             .send(userId="me", body=create_message)
             .execute()
         )
-        print(F'sent message to {message} Message Id: {message["id"]}')
+        print(f'sent message to {message} Message Id: {message["id"]}')
     except HTTPError as error:
         print(f'An error occurred: {error}')
         print(f'Could not sent email to {email_address}')
@@ -76,6 +77,11 @@ async def send_email_async(executor, email_address, body_html):
 
 
 async def email_all_subscribers(email_addr_html_content: list[dict]) -> None:
+    """email_addr_html_content: {
+        'email': 'address@email',
+        'html': '<html>...</html>'
+    }
+    """
     tasks = []
     with ThreadPoolExecutor(max_workers=10) as executor:
         for email in email_addr_html_content:
@@ -96,15 +102,7 @@ if __name__ == '__main__':
             'html': '<p> qwyer </p>'
         },
 
-        {
-            'email_address': 'callumtaylor955@gmail.com',
-            'html': '<p> sdgfadfg </p>'
-        },
 
-        {
-            'email_address': 'callumtaylor955@gmail.com',
-            'html': '<p> sdfghsdfggfdgfadfg </p>'
-        },
     ]
 
     asyncio.run(email_all_subscribers(email_and_content))

@@ -1,10 +1,7 @@
-import boto3
+
 import datetime
 import pandas as pd
 from aws_utils.utils import AWSTools
-
-ses = boto3.client('ses', region_name='eu-west-2') 
-
 
 def lambda_handler(event, context):
     """To be run at 0000 every day.
