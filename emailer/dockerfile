@@ -12,7 +12,7 @@ WORKDIR /app
 COPY --from=build /usr/local/lib/python3.9/site-packages /usr/local/lib/python3.12/site-packages
 COPY --from=build /usr/local/bin /usr/local/bin
 
-COPY ./src ./src
-COPY ./lambda_handler.py ./
+COPY . .
+
 
 CMD ["lambda_handler.lambda_handler"]
