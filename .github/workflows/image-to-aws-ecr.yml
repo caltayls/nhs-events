@@ -52,7 +52,7 @@ jobs:
       # Build and push Image
       - name: Build Event Finder Docker Image
         run: |
-          docker build -t ${{ secrets.SERVICE1_ECR_REPOSITORY }} ./event_finder
+          docker build -t ${{ secrets.EF_ECR_REPO }} ./event_finder
 
       - name: Tag Docker Event Finder Image
         run: |
