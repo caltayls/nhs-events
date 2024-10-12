@@ -1,0 +1,6 @@
+aiohttp==3.10.10
+beautifulsoup4==4.12.3
+boto3==1.35.39
+botocore==1.35.39
+pandas==2.2.3
+python-dotenv==1.0.1
