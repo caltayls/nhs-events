@@ -12,40 +12,32 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
 
-      - name: Log in to AWS ECR
-        id: ecr-login
-        uses: aws-actions/amazon-ecr-login@v1
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
 
-      # Build and push Image
-      - name: Build Event Finder Docker Image
+      - name: Build, tag, and push event finder docker image to Amazon ECR
+        env:
+          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          REPOSITORY: ${{ secrets.ECR_REG }}
         run: |
-          docker build -t ${{ secrets.EF_ECR_REPO }} ./event_finder
+          cd event_finder
+          docker build -t $REGISTRY/event-finder:latest .
+          docker push $REGISTRY//event-finder:latest .
 
-      - name: Tag Docker Event Finder Image
+      - name: Build, tag, and push emailer docker image to Amazon ECR
+        env:
+          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          REPOSITORY: ${{ secrets.ECR_REG }}
         run: |
-          docker tag ${{ secrets.EF_ECR_REPO }}:latest ${{ steps.ecr-login.outputs.registry }}/${{ secrets.EF_ECR_REPO }}:latest
-
-      - name: Push Docker EF Image to ECR
-        run: |
-          docker push ${{ steps.ecr-login.outputs.registry }}/${{ secrets.EF_ECR_REPO }}:latest
-
-      # Build and push Emailer Image
-      - name: Build Docker Emailer Image
-        run: |
-          docker build -t ${{ secrets.EMAILER_ECR_REPO }} ./emailer
-
-      - name: Tag Docker Image 2 (Service 2)
-        run: |
-          docker tag ${{ secrets.EMAILER_ECR_REPO }}:latest ${{ steps.ecr-login.outputs.registry }}/${{ secrets.EMAILER_ECR_REPO }}:latest
-
-      - name: Push Docker Image 2 (Service 2) to ECR
-        run: |
-          docker push ${{ steps.ecr-login.outputs.registry }}/${{ secrets.EMAILER_ECR_REPO }}:latest
+          cd emailer
+          docker build -t $REGISTRY/emailer:latest .
+          docker push $REGISTRY//emailer:latest .
 
   # Step 3: Terraform Apply to Deploy Remaining Infrastructure
   deploy-infra:
@@ -53,24 +45,17 @@ jobs:
     needs: build-and-push  # Depends on the "build-and-push" job
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Terraform
-        uses: hashicorp/setup-terraform@v1
-        with:
-          terraform_version: 1.5.0
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
 
       - name: Terraform Init (Deploy Infrastructure)
-        run:  cd terraform && terraform init -backend-config="infra-backend.tf"
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
+        run: |
+          cd terraform && terraform fmt
+          terraform init
+          terraform apply --auto-approve
 
-      - name: Terraform Apply (Deploy Infrastructure)
-        run: cd terraform && terraform apply -auto-approve
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
+#          AWS_REGION: ${{ secrets.AWS_REGION }}
+
