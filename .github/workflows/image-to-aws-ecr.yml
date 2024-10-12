@@ -34,7 +34,7 @@ jobs:
           REPOSITORY: ${{ secrets.ECR_REG }}
         run: |
           cd event_finder
-          run : echo "${{ secrets.EVENT_FINDER_ENV }}" > .env
+          echo "${{ secrets.EVENT_FINDER_ENV }}" > .env
           docker build -t $REGISTRY/event-finder:latest .
           docker push $REGISTRY//event-finder:latest .
 
@@ -44,7 +44,7 @@ jobs:
           REPOSITORY: ${{ secrets.ECR_REG }}
         run: |
           cd emailer
-          run : echo "${{ secrets.EMAILER_ENV }}" > .env
+          echo "${{ secrets.EMAILER_ENV }}" > .env
           docker build -t $REGISTRY/emailer:latest .
           docker push $REGISTRY//emailer:latest .
 
