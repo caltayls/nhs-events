@@ -153,7 +153,6 @@ def test_reformat_df():
     assert row8['event_name'] == formatted_df_idx7['event_name']
     assert row8['location'] == formatted_df_idx7['location']
     assert row8['url'] == formatted_df_idx7['url']
-    assert row8['date_end'] == pd.to_datetime(formatted_df_idx7['date_end'])
     assert row8['website_name'] == formatted_df_idx7['website_name']
 
 

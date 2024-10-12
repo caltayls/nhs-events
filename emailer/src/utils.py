@@ -2,6 +2,8 @@ import boto3
 import pandas as pd
 from datetime import datetime
 from boto3.dynamodb.conditions import Key
+from dotenv import load_dotenv
+import os
 
 # Create cache for func
 def get_areas_from_county(user_row, location_df) -> pd.Series:
@@ -17,7 +19,9 @@ def get_areas_from_county(user_row, location_df) -> pd.Series:
 def get_users() -> list[dict]:
 	"filters users based on their freq preference and date/time"
 	dynamo = boto3.client("dynamodb")
-	table = dynamo.Table("users")
+	load_dotenv()
+
+	table = dynamo.Table(os.getenv("TABLE_NAME"))
 
 	dt = datetime.today()
 	hour = dt.hour

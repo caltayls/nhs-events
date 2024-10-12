@@ -18,7 +18,8 @@ def test_add_end_date_to_df(mocker):
             "1/1 - 10/1",
             "02/05/2025",
             "06/06",
-            "12 May"
+            "12 May",
+            "September 7, 2024",
     ]}
 
     date_df = pd.DataFrame(dates)
@@ -30,5 +31,6 @@ def test_add_end_date_to_df(mocker):
     assert str(results.loc[8, "date_end"]) == "2025-05-12 00:00:00"
     assert str(results.loc[6, "date_end"]) == "2025-05-02 00:00:00"
     assert str(results.loc[3, "date_end"]) == "2024-10-15 00:00:00"
+    assert str(results.loc[9, "date_end"]) == "2024-09-07 00:00:00"
 
 

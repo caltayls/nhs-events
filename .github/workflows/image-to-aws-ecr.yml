@@ -1,42 +1,104 @@
-# name: Build and Deploy Docker Image
+name: Terraform, ECR, and Multi-Image Deployment
 
-# on:
-#   push:
-#     branches:
-#       - main
+on:
+  push:
+    branches:
+      - main  # Adjust to your preferred branch
 
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
+jobs:
+  # Step 1: Terraform Apply to Create ECR Repositories
+  create-ecr:
+    runs-on: ubuntu-latest
 
-#     steps:
-#       - name: Checkout repo
-#         uses: actions/checkout@v3
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-#       - name: Create .env file
-#         run : echo "${{ secrets.ENV_FILE }}" > .env
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 1.5.0  # Specify your Terraform version
 
-#       - name: Configure AWS credentials
-#         uses: aws-actions/configure-aws-credentials@v4
-#         with:
-#           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#           aws-region: ${{ secrets.AWS_REGION }}
+      - name: Terraform Init (Create ECR Repos)
+        run: cd terraform_ecr && terraform init
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
 
-#       - name: Set up Docker Buildx
-#         uses: docker/setup-buildx-action@v2
+      - name: Terraform Apply (Create ECR Repos)
+        run: cd terraform_ecr && terraform apply -auto-approve
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
 
-#       - name: Login to Amazon ECR
-#         id: login-ecr
-#         uses: aws-actions/amazon-ecr-login@v2
+  # Step 2: Build and Push Docker Images to ECR
+  build-and-push:
+    runs-on: ubuntu-latest
+    needs: create-ecr  # Depends on the "create-ecr" job
 
-#       - name: Build and push Docker image to ECR
-#         id: build-image
-#         env:
-        
-#           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-#           REPOSITORY: nhs-events
-#           IMAGE_TAG: latest
-#         run: |
-#           docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
-#           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Log in to AWS ECR
+        id: ecr-login
+        uses: aws-actions/amazon-ecr-login@v1
+
+      # Build and push Image
+      - name: Build Event Finder Docker Image
+        run: |
+          docker build -t ${{ secrets.SERVICE1_ECR_REPOSITORY }} ./event_finder
+
+      - name: Tag Docker Event Finder Image
+        run: |
+          docker tag ${{ secrets.EF_ECR_REPO }}:latest ${{ steps.ecr-login.outputs.registry }}/${{ secrets.EF_ECR_REPO }}:latest
+
+      - name: Push Docker EF Image to ECR
+        run: |
+          docker push ${{ steps.ecr-login.outputs.registry }}/${{ secrets.EF_ECR_REPO }}:latest
+
+      # Build and push Emailer Image
+      - name: Build Docker Emailer Image
+        run: |
+          docker build -t ${{ secrets.EMAILER_ECR_REPO }} ./emailer
+
+      - name: Tag Docker Image 2 (Service 2)
+        run: |
+          docker tag ${{ secrets.EMAILER_ECR_REPO }}:latest ${{ steps.ecr-login.outputs.registry }}/${{ secrets.EMAILER_ECR_REPO }}:latest
+
+      - name: Push Docker Image 2 (Service 2) to ECR
+        run: |
+          docker push ${{ steps.ecr-login.outputs.registry }}/${{ secrets.EMAILER_ECR_REPO }}:latest
+
+  # Step 3: Terraform Apply to Deploy Remaining Infrastructure
+  deploy-infra:
+    runs-on: ubuntu-latest
+    needs: build-and-push  # Depends on the "build-and-push" job
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 1.5.0
+
+      - name: Terraform Init (Deploy Infrastructure)
+        run:  cd terraform && terraform init -backend-config="infra-backend.tf"
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+
+      - name: Terraform Apply (Deploy Infrastructure)
+        run: cd terraform && terraform apply -auto-approve
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}

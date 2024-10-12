@@ -1,21 +1,21 @@
-data "archive_file" "event_finder" {
-  type        = "zip"
-  source_dir  = "${path.module}/../event_finder"
-  output_path = "${path.module}/event_finder.zip"
-  excludes = ["venv", "tests"]
-
-
-}
-
 resource "aws_lambda_function" "event_finder" {
   function_name = "event-finder"
   role          = aws_iam_role.event_finder_role.arn
   runtime = "python3.12"
+  architectures = ["x86_64"]
   handler = "src.lambda_handler.lambda_handler"
 
-  filename      = data.archive_file.event_finder.output_path
-  source_code_hash = filebase64sha256(data.archive_file.event_finder.output_path)
+  timeout = 60
 }
+
+#   filename      = data.archive_file.event_finder.output_path
+#   source_code_hash = filebase64sha256(data.archive_file.event_finder.output_path)
+
+#   layers = [
+#     aws_lambda_layer_version.module_layer.arn,
+#     aws_lambda_layer_version.aws_utils.arn,
+#   ]
+
 
 resource "aws_iam_role" "event_finder_role" {
   name = "event-finder-role"
@@ -65,6 +65,13 @@ resource "aws_lambda_permission" "allow_event_bridge" {
   statement_id  = "AllowExecutionFromEventBridge"
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.event_finder.function_name
-  principal     = "s3.amazonaws.com"
+  principal     = "events.amazonaws.com"
   source_arn    = aws_cloudwatch_event_rule.weekday_working_hours.arn
 }
+
+# data "archive_file" "event_finder" {
+#   type        = "zip"
+#   source_dir  = "${path.module}/../event_finder"
+#   output_path = "${path.module}/event_finder.zip"
+#   excludes = ["venv", "tests", "**/__pycache__"]
+# }

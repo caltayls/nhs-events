@@ -1,0 +1,22 @@
+{
+  "Users": [
+    {
+      "PutRequest": {
+        "Item": {
+          "freq": {"S": "hourly"},
+          "uuid": {"S": "1234"},
+          "email": {"S": "callumtaylor955@gmail.com"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "freq": {"S": "daily"},
+          "uuid": {"S": "1235"},
+          "email": {"S": "callumtaylor955@gmail.com"}
+        }
+      }
+    }
+  ]
+}

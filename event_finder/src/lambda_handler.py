@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 from src.parse_events import EventParser
-from event_finder.src.filter_new_events import get_new_events, update_bucket
+from src.filter_new_events import get_new_events, update_bucket
 from aws_utils.utils import AWSTools
 
 load_dotenv()

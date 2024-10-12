@@ -43,9 +43,9 @@ class Client(BaseModel):
     def from_env(cls):
         load_dotenv(override=True)
         return cls(
-            email=os.getenv('GMAIL_EMAIL'),
-            app_password=os.getenv('GMAIL_APP_PASSWORD'),
-            name=os.getenv('GMAIL_NAME'),
+            email = os.getenv('GMAIL_EMAIL'),
+            app_password = os.getenv('GMAIL_APP_PASSWORD'),
+            name = os.getenv('GMAIL_NAME'),
         )
 
     @property

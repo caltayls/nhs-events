@@ -1,6 +1,8 @@
 resource "aws_dynamodb_table" "user_table" {
-  name     = "user-table"
-  billing_mode = "PAY_PER_REQUEST"
+  name     = "Users"
+  billing_mode   = "PROVISIONED"
+  read_capacity = 5
+  write_capacity = 5
   hash_key = "freq"
   range_key = "uuid"
 

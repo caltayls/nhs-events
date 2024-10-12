@@ -1,9 +1,8 @@
-from io import BytesIO
 import pandas as pd
 import os
 from dotenv import load_dotenv
 from datetime import datetime
-from emailer.src import utils, html_generator
+from src import utils, html_generator
 from aws_utils.utils import AWSTools
 
 

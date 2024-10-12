@@ -210,4 +210,5 @@ class EventParser:
         event_df['url'] = event_df.website + event_df.url
         fmt = '%Y-%m-%dT%H:%M:%S'
         event_df['created_at'] = datetime.today().strftime(fmt)
+        event_df = event_df.drop("website", axis=1)
         return event_df
