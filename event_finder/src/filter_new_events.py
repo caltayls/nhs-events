@@ -1,15 +1,16 @@
 import pandas as pd
 import os
 from dotenv import load_dotenv
-from aws_utils.utils import AWSTools
+from src.aws_utils import AWSTools
 
 load_dotenv()
 
-BUCKET_NAME = os.getenv("BUCKET_NAME")
-ACTIVE_EVENTS = os.getenv("ACTIVE_EVENTS")
+BUCKET_NAME = os.getenv("AWS_BUCKET")
+ACTIVE_EVENTS = os.getenv("ACTIVE_EVENTS_FILENAME")
 # PAST_EVENTS = os.getenv("PAST_EVENTS")
 
-def get_new_events(events_new: pd.Dataframe, events_existing: pd.DataFrame) -> pd.DataFrame:
+
+def get_new_events(events_new: pd.DataFrame, events_existing: pd.DataFrame) -> pd.DataFrame:
     """Compares new search to active events dataset.
     returns new events and adds then to active events."""
 
@@ -29,4 +30,5 @@ def get_new_events(events_new: pd.Dataframe, events_existing: pd.DataFrame) -> p
 
 def update_bucket(events_new, events_existing):
     updated_events = pd.concat([events_existing, events_new], axis=0)
+    print(events_new)
     AWSTools.df_to_bucket(updated_events, ACTIVE_EVENTS, BUCKET_NAME)
