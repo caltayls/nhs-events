@@ -1,13 +1,6 @@
 import pandas as pd
-import os
-from dotenv import load_dotenv
+
 from src.aws_utils import AWSTools
-
-load_dotenv()
-
-BUCKET_NAME = os.getenv("AWS_BUCKET")
-ACTIVE_EVENTS = os.getenv("ACTIVE_EVENTS_FILENAME")
-# PAST_EVENTS = os.getenv("PAST_EVENTS")
 
 
 def get_new_events(events_new: pd.DataFrame, events_existing: pd.DataFrame) -> pd.DataFrame:
@@ -28,7 +21,6 @@ def get_new_events(events_new: pd.DataFrame, events_existing: pd.DataFrame) -> p
     return new_events
 
 
-def update_bucket(events_new, events_existing):
+def update_bucket_file(events_new, events_existing, aws_tools: AWSTools, bucket_filename: str):
     updated_events = pd.concat([events_existing, events_new], axis=0)
-    print(events_new)
-    AWSTools.df_to_bucket(updated_events, ACTIVE_EVENTS, BUCKET_NAME)
+    aws_tools.df_to_bucket(updated_events, file_name=bucket_filename)

@@ -187,11 +187,11 @@ class EventParser:
     @staticmethod
     async def async_task_runner() -> pd.DataFrame:
         """Get all events from all websites"""
-        parser1 = EventParser('bluelighttickets')
+        # parser1 = EventParser('bluelighttickets')
         parser2 = EventParser('ticketsforgood')
         parser3 = EventParser('concertsforcarers')
         tasks = []
-        for p in [parser1, parser2, parser3]:
+        for p in [parser2, parser3]:
             task = asyncio.create_task(p.aysnc_task_cont())
             tasks.append(task)
         df_array = await asyncio.gather(*tasks)
