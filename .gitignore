@@ -9,6 +9,8 @@ __pycache__/
 # intellij
 .idea
 
+.deployment*
+
 # Terraform
 .terraform*
 .coverage
